@@ -1,0 +1,26 @@
+{%extends "layer.html"%}
+{%block body%}
+<form method>
+<input name="Instock" type="text">
+<input name="Instock" type="text">
+<input name="Instock" type="text">
+<input name="Instock" type="text">
+<button type="button" name="fuck" formmethod="post">добавить!</button>
+</form>
+<form method = 'post'>
+<select name="select">
+    <option> По ученику</option>
+    <option> По книге</option>
+</select>
+    <input type="text" name="search">
+    <input type="submit">
+<h3>{{stname}}</h3>
+<p>Класс: {{klass}}</p>
+<table border="2" >
+    <tr><th>Книга</th><th>Дата сдачи</th></tr>
+
+    <tr><th>{{arrays['Ройтерштейн Антон'][0][0]}}</th><th>{{arrays['Ройтерштейн Антон'][0][1]}}</th></tr>
+
+</table>
+</form>
+{%endblock%}

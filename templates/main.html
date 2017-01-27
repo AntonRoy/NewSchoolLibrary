@@ -1,0 +1,37 @@
+{%extends "layer.html"%}
+{%block body%}
+<a class="button28" href="{{ url_for('addbook') }}">Добавить книгу</a>
+<div class="main">
+    <form method='post' id="name">
+        <select name="select">
+    <option> По ученику</option>
+    <option> По книге</option>
+            </select>
+        <input type="search" name="search">
+        <input type="submit" value="Поиск">
+    </form>
+    {% if uch == True%}
+    <h3>{{stname}}</h3>
+
+    <table border="1">
+        <tr>
+            <th>Книга</th>
+            <th>Дата выдачи</th>
+            <th>Дата сдачи</th>
+        </tr>
+        {%for i in arrays%}
+        <tr><th>{{i[0]}}</th><th>{{i[1]}}</th><th>{{i[2]}}</th></tr>
+        {%endfor%}
+    </table>
+</div>
+{%elif uch == False%}
+<h3>{{stname}}</h3>
+    <tr><th>Имя</th><th>Фамилия</th><th></th></tr>
+    {%for i in arrays%}
+    <tr><th>{{i[0]}}</th><th>{{i[1]}}</th><th>{{i[2]}}</th></tr>
+    {%endfor%}
+</table>
+{%elif uch == 3%}
+{%endif%}
+    </div>
+{%endblock%}

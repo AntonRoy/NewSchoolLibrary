@@ -1,0 +1,13 @@
+{%extends "layer.html"%}
+{% block body %}
+<div class="main">
+    <h3>Добавление книги</h3>
+    <form method=post id="name">
+        <input value="название книги" type="text" name="book"><br/>
+        <input value="автор книги" type="text" name="author"><br/>
+        <input value="в библиотеке" type="text" name="inlib"><br/>
+        <input value="всего" type="text" name="all"><br/>
+        <input VALUE="Отправить" type="submit">
+    </form>
+</div>
+{%endblock%}
