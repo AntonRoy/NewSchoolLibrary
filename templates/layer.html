@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<div>
     <title>Thechno-lib</title>
     <meta charset="UTF-8">
     	 {%if not session.logged_in %}
-    <a class="button28" href="{{ url_for('login') }}">log in</a>
+    <div class="head" align="right"><a class="button28" href="{{ url_for('login') }}" style="margin: auto;">log in</a></div>
     <meta http-equiv="refresh" content="1;URL={{ url_for('login') }}" />
   {% else %}
-    <a class="button28" href="{{ url_for('logout') }}">log out</a>
+
   {% endif %}
      <style>
      a.button28 {
@@ -44,13 +44,23 @@ a.button28:active {
     background-color: RGB(78, 115, 150); /* Цвет фона */
    }
    DIV.main {
-   padding: 10px;
-   position: absolute;
-   top:50px;
+   padding: 15px;
+    width:50%;
+    margin: auto;
+   top:60px;
    border-radius: 1em/1em;
    background-color: RGB(236, 236, 236);
   align = "center"
+
    }
+   div.head{
+   width:100%;
+
+   padding:5px;
+   border-radius: 1em/1em;
+   background-color: RGB(236, 236, 236);
+   }
+
   </style>
 </head>
 {%block body%}{%endblock%}
