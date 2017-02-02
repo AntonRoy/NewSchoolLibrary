@@ -31,27 +31,34 @@ def login():
 
 @app.route('/main', methods=['GET', 'POST'])
 def main():
+    stname = None
     if request.method == 'POST':
-        select = request.form['select']
-        print(select)
-        if select == 'По ученику':
-            stname = request.form['search']
-            books = [['121123', 'dfdasf', 'dsfasads']]
-            if len(books) >= 1:
-                uch = True
-            else:
-                uch = 3
-            return render_template('main.html', stname=stname, arrays=books, uch=uch)
-        elif select == 'По книге':
-            stname = request.form['search']
-            students = [['121123', 'dfdasf', 'dsfasads']]
-            if len(students) >= 1:
-                uch = False
-            else:
-                uch = 3
-            return render_template('main.html', stname=stname, arrays=students, uch=uch)
+        try:
+            change=request.form['Change']
+            print(change, type(change), stname)
+            uch = True
+            return render_template('main.html', stname='Книга Удалена', arrays=None, uch=None, isdeleted='Удалено')
+        except:
+            select = request.form['select']
+            print(select)
+            if select == 'По ученику':
+                stname = request.form['search']
+                books = [['Windows 10', '12.12.2016', '22.01.2016']]
+                if len(books) >= 1:
+                    uch = True
+                else:
+                    uch = 3
+                return render_template('main.html', stname=stname, arrays=books, uch=uch, isdeleted='')
+            elif select == 'По книге':
+                stname = request.form['search']
+                students = [['Антон Ройтерштейн', '12.12.2016', '22.01.2016']]
+                if len(students) >= 1:
+                    uch = False
+                else:
+                    uch = 3
+            return render_template('main.html', stname=stname, arrays=students, uch=uch, isdeleted='')
 
-    return render_template('main.html', stname=None, arrays=None, klass=None, uch=None)
+    return render_template('main.html', stname=None, arrays=None, klass=None, uch=None, isdeleted='')
 
 
 @app.route('/logout')
@@ -63,16 +70,17 @@ def logout():
 @app.route('/addbook', methods=['GET', 'POST'])
 def addbook():
     if request.method == 'POST':
-        name = request.form['book']
-        author = request.form['author']
-        in_Stock = request.form['inlib']
-        All_Books = request.form['all']
-        print(name, author, in_Stock, All_Books)
-        return render_template('OK.html')
+        skan = request.form['scan']
+        print(skan)
+        return render_template('add book.html', all_returned='Отправлено!')
     return render_template('add book.html', all_returned=' ')
 
 app.secret_key = os.urandom(24)
 
+@app.route('/changes')
+def changes():
+
+    return render_template('changes.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
