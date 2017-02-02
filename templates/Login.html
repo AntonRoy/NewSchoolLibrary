@@ -3,7 +3,8 @@
 <head>
 
     <meta charset="UTF-8">
-    <title color = "#FF11FF">Adventurous Community</title>
+    <title color = "#FF11FF">Techno-lib</title>
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
 <style>
      a.button28 {
   position: relative;
@@ -39,23 +40,26 @@ a.button28:active {
     background-color: RGB(78, 115, 150); /* Цвет фона */
    }
    DIV.main {
-   padding: 10px;
-   position: absolute;
-   top:50px;
+   margin: auto;
+   width:50%;
+padding: 15px;
    border-radius: 1em/1em;
    background-color: RGB(236, 236, 236);
   align = "center"
+
    }
+
+
   </style>
 </head>
 <body>
 <div align = center class = main>
     <form method = 'POST'>
         <h2>Login</h2>
-  {% if error %}<p><strong>Error:</strong> {{ error }}{% endif %}
-        <input type = 'text' name = 'login' id="login" >
-        <input type = 'password' name = 'password'  id='passwor'>
-        <input type = 'submit' class=.login-button>
+        <input type = 'text' name = 'login' id="login" placeholder="логин">
+        <input type = 'password' name = 'password'  id='password' placeholder="пароль">
+        <input type = 'submit' class=.login-button value="Войти">
+        {% if error %}<p><strong>Error:</strong> {{ error }}{% endif %}
 
     </form>
 </div>

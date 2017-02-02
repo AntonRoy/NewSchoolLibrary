@@ -1,7 +1,18 @@
 {%extends "layer.html"%}
 {%block body%}
-<a class="button28" href="{{ url_for('addbook') }}">Добавить книгу</a>
-<div class="main">
+<script>
+    function deleted(){
+    var whenPressed =
+    }
+</script>
+<div class="head" align="center">
+     <span style="font-size: 180%">Электронная система управления библиотекой&nbsp;&nbsp;&nbsp;</span>
+    <a class="button28" href="{{ url_for('addbook') }}" style="margin: auto;">Добавить книгу</a><input type="hidden">
+    <a class="button28" href="{{ url_for('logout') }}" style="margin: auto;">log out</a>
+</div>
+</br>
+<div class="main" align="center">
+    <h2 align="center">Поиск задолжностей</h2>
     <form method='post' id="name">
         <select name="select">
     <option> По ученику</option>
@@ -12,7 +23,7 @@
     </form>
     {% if uch == True%}
     <h3>{{stname}}</h3>
-
+    <h3>{{isdeleted}}</h3>
     <table border="1">
         <tr>
             <th>Книга</th>
@@ -23,14 +34,18 @@
         <tr><th>{{i[0]}}</th><th>{{i[1]}}</th><th>{{i[2]}}</th></tr>
         {%endfor%}
     </table>
-</div>
-{%elif uch == False%}
+    <br/>
+<form method="post"><button value=True name="Change" onclick=this.value='False'; >Удалить ученика</button></form>
+    {%elif uch == False%}
 <h3>{{stname}}</h3>
-    <tr><th>Имя</th><th>Фамилия</th><th></th></tr>
+<table border="1">
+    <tr><th>Имя</th><th>Дата выдачи</th><th>Дата сдачи</th></tr>
     {%for i in arrays%}
     <tr><th>{{i[0]}}</th><th>{{i[1]}}</th><th>{{i[2]}}</th></tr>
     {%endfor%}
 </table>
+    <br/>
+<form method="post"><button value=True name="Change" onclick=this.value='False'; >Удалить книгу</button></form>
 {%elif uch == 3%}
 {%endif%}
     </div>
