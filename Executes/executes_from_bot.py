@@ -11,8 +11,7 @@ def Book_In_Library(Name_Of_Book1, Author_Of_Book1):
     except:
         print('Could not connect')
     cursor = connection.cursor()
-    request = cursor.execute(("select *from Books_Tab where Books_Tab.Name_Of_Book = '{0}' and Books_Tab.Author_Of_Book = '{1}' and Books_Tab.In_Stock > 0").format(
-        Name_Of_Book1, Author_Of_Book1)).fetchall()
+    request = cursor.execute(("select *from Books_Tab where Name_Of_Book = '{0}' and Author_Of_Book = '{1}' and Books_Tab.In_Stock > 0").format(Name_Of_Book1, Author_Of_Book1)).fetchall()
     connection.close()
     if len(request):
         return True
@@ -30,7 +29,7 @@ def Books_Of_Author_In_Library(Author):
     except:
         print('Could not connect')
     cursor = connection.cursor()
-    request = cursor.execute("select Name_Of_Book, In_Stock from Main_Books_Tab where Author_Of_Book = '{0}' and In_Stock > 0".format(Author)).fetchall()
+    request = cursor.execute("select Name_Of_Book, In_Stock from Books_Tab where Author_Of_Book = '{0}'".format(Author)).fetchall()
     connection.close()
     if request:
         return request
