@@ -26,8 +26,8 @@
        <input type="password" class="form-control input-md" name = 'password'  id='password' placeholder="пароль">
       </div>
        </div>
-     <input class="btn btn-success btn-md" type = 'submit'  value="Войти">
-     {% if error %}<p><strong>Error:</strong></p> {{ error }}{% endif %}
+     <input class="btn btn-success btn-md" type = 'submit'  value="Войти"><br>
+     {% if error %}<p><strong>Ошибка:</strong>{{ error }}</p> {% endif %}
     </form>
 </div>
 {%endblock%}

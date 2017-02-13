@@ -26,7 +26,7 @@ def login():
             session['logged_in'] = True
             return redirect(url_for('main'))
         else:
-            error = "Invalid username/password"
+            error = "Неверный логин/пароль"
     return render_template('Login.html', error=error)
 
 
