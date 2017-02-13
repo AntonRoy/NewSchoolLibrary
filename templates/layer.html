@@ -1,67 +1,18 @@
+
 <!DOCTYPE html>
+{%extends "bootstrap/base.html" %}
 <html lang="en">
 <div>
-    <title>Thechno-lib</title>
+    <title>New/o-lib</title>
     <meta charset="UTF-8">
     	 {%if not session.logged_in %}
-    <div class="head" align="right"><a class="button28" href="{{ url_for('login') }}" style="margin: auto;">log in</a></div>
+    <div class="head" align="right"><a class="btn btn-default" href="{{ url_for('login') }}" style="margin: auto;">log in</a></div>
     <meta http-equiv="refresh" content="1;URL={{ url_for('login') }}" />
+</div>
   {% else %}
 
   {% endif %}
-     <style>
-     a.button28 {
-  position: relative;
-  display: inline-block;
-  font-size: 100%;
-  font-weight: 600;
-  color: rgb(51,51,51);
-  text-decoration: none;
-  text-shadow: 0 -1px 2px rgba(0,0,0,.2);
-  padding: .1em 0.5em;
-  outline: none;
-  border-radius: 3px;
-  background: linear-gradient(rgb(180,182,200), rgb(161,161,166)) rgb(190,192,200);
-  box-shadow:
-   0 1px rgba(255,255,255,.2) inset,
-   0 3px 5px rgba(0,1,6,.5),
-   0 0 1px 1px rgba(0,1,6,.2);
-  transition: .2s ease-in-out;
-}
-a.button28:hover:not(:active) {
-  background: linear-gradient(rgb(220,220,220), rgb(110,110,110)) rgb(126,126,134);
-}
-a.button28:active {
-  top: 1px;
-  background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
-  box-shadow:
-   0 0 1px rgba(0,0,0,.5) inset,
-   0 2px 3px rgba(0,0,0,.5) inset,
-   0 1px 1px rgba(255,255,255,.1);
-}
-   body {
-    /* Путь к фоновому изображению */
-    background-color: RGB(78, 115, 150); /* Цвет фона */
-   }
-   DIV.main {
-   padding: 15px;
-    width:50%;
-    margin: auto;
-   top:60px;
-   border-radius: 1em/1em;
-   background-color: RGB(236, 236, 236);
-  align = "center"
 
-   }
-   div.head{
-   width:100%;
-
-   padding:5px;
-   border-radius: 1em/1em;
-   background-color: RGB(236, 236, 236);
-   }
-
-  </style>
 </head>
 {%block body%}{%endblock%}
 </html>

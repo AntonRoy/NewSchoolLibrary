@@ -1,13 +1,13 @@
 from flask import*
-
+from flask_bootstrap import Bootstrap
 import os
 
-
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
+
 
 username = 'a1'
 password = 'a1'
-
 
 
 @app.route('/')
@@ -21,12 +21,13 @@ def start():
 def login():
     error = None
     if request.method == 'POST':
+        print()
         if request.form['login'] == username and request.form['password'] == password:
             session['logged_in'] = True
             return redirect(url_for('main'))
         else:
             error = "Invalid username/password"
-    return render_template('login.html', error=error)
+    return render_template('Login.html', error=error)
 
 
 @app.route('/main', methods=['GET', 'POST'])
