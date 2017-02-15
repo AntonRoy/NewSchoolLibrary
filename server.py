@@ -45,6 +45,7 @@ def main():
             print(select)
             if select == 'По ученику':
                 stname = request.form['search']
+                print(stname)
                 books = executes_for_web.Search_Of_Student(stname)
                 if len(books) >= 1:
                     uch = True
@@ -52,13 +53,13 @@ def main():
                     uch = 3
                 return render_template('main.html', stname=stname, arrays=books, uch=uch)
             elif select == 'По книге':
-                stname = request.form['search']
-                students = executes_for_web.Search_Of_Book(stname)
+                stname = request.form['search'].split()
+                students = executes_for_web.Search_Of_Book(stname[0], stname[1])
                 if len(students) >= 1:
                     uch = False
                 else:
                     uch = 3
-            return render_template('main.html', stname=stname, arrays=students, uch=uch, isdeleted='')
+            return render_template('main.html', stname=stname[0] + stname[1], arrays=students, uch=uch, isdeleted='')
 
     return render_template('main.html', stname=None, arrays=None, klass=None, uch=None, isdeleted='')
 
