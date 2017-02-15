@@ -73,9 +73,8 @@ def logout():
 @app.route('/addbook', methods=['GET', 'POST'])
 def addbook():
     if request.method == 'POST':
-        skan = request.form['scan']
-        col = request.form['col']
-        print(skan, col)
+        code = request.form['scan']
+        cnt = request.form['col']
         return render_template('add book.html', all_returned='Отправлено!')
     return render_template('add book.html', all_returned=' ')
 
