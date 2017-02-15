@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
-{%extends "bootstrap/base.html" %}
 <html lang="en">
-<div>
-    <title>New/o-lib</title>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <title>Neo-lib</title>
     <meta charset="UTF-8">
     	 {%if not session.logged_in %}
-    <div class="head" align="right"><a class="btn btn-default" href="{{ url_for('login') }}" style="margin: auto;">log in</a></div>
     <meta http-equiv="refresh" content="1;URL={{ url_for('login') }}" />
-</div>
   {% else %}
 
   {% endif %}
