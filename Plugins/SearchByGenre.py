@@ -9,7 +9,7 @@ class Plugin:
         print('автор')
 
     def getkeys(self):
-        keys = [u'Автор', u'автор']
+        keys = [u'жанр', u'жанр']
         ret = {}
         for key in keys:
             ret[key] = self
@@ -17,11 +17,11 @@ class Plugin:
 
     def call(self, msg):
         genre = msg['body'].split()[1]
-        books = executes_from_bot.AntonsFuntion(genre)
+        books = executes_from_bot.Books_Of_Genre_In_Library(genre)
         try:
             cnt = 0
             for book in books:
                 cnt += 1
-                self.vk.respond(msg, {'message': str(cnt) + ')' + book[0] + ',' + ' доступно ' + str(book[1])})
+                self.vk.respond(msg, {'message': str(cnt) + ')' + book[0] + ', ' + book[1]+ ', ' + 'доступно ' + str(book[2])})
         except:
             self.vk.respond(msg, {'message': books})
