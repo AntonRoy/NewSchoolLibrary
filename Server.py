@@ -59,7 +59,7 @@ def main():
                     uch = False
                 else:
                     uch = 3
-            return render_template('main.html', stname=stname[0] + stname[1], arrays=students, uch=uch, isdeleted='')
+                return render_template('main.html', stname=stname[0] + stname[1], arrays=students, uch=uch, isdeleted='')
 
     return render_template('main.html', stname=None, arrays=None, klass=None, uch=None, isdeleted='')
 
@@ -69,14 +69,20 @@ def logout():
     session.pop('logged_in', None)
     return redirect(url_for('start'))
 
-
 @app.route('/addbook', methods=['GET', 'POST'])
 def addbook():
     if request.method == 'POST':
         code = request.form['scan']
         cnt = request.form['col']
-        return render_template('add book.html', all_returned='Отправлено!')
-    return render_template('add book.html', all_returned=' ')
+        print(code, cnt)
+        if int(cnt) < 1:
+            # Для вывода ошибки библиотекарб стоит использовать атрибут problem
+            return render_template('add book.html', all_returned='', problem='Количество книг не может быть меньше 1')
+        else:
+            # Антон, весь твой sql должен быть здесь
+            return render_template('add book.html', all_returned='Добавлено!', problem='')
+
+    return render_template('add book.html', all_returned='', problem='')
 
 app.secret_key = os.urandom(24)
 

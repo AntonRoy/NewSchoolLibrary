@@ -9,10 +9,7 @@
     <meta charset="UTF-8">
     	 {%if not session.logged_in %}
     <meta http-equiv="refresh" content="1;URL={{ url_for('login') }}" />
-  {% else %}
-
   {% endif %}
-
 </head>
 {%block body%}{%endblock%}
 </html>
