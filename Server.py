@@ -59,9 +59,9 @@ def main():
                     uch = False
                 else:
                     uch = 3
-                return render_template('main.html', stname=stname[0] + stname[1], arrays=students, uch=uch, isdeleted='')
+                return render_template('main.html', stname=stname[0] + stname[1], arrays=students, uch=uch)
 
-    return render_template('main.html', stname=None, arrays=None, klass=None, uch=None, isdeleted='')
+    return render_template('main.html', stname=None, arrays=None, uch=None)
 
 
 @app.route('/logout')
@@ -69,14 +69,19 @@ def logout():
     session.pop('logged_in', None)
     return redirect(url_for('start'))
 
+
 @app.route('/addbook', methods=['GET', 'POST'])
 def addbook():
     if request.method == 'POST':
         code = request.form['scan']
         cnt = request.form['col']
         print(code, cnt)
+        try:
+            print(int(code))
+        except:
+            return render_template('add book.html', all_returned='', problem='ISBN должен состоять только из цифр')
         if int(cnt) < 1:
-            # Для вывода ошибки библиотекарб стоит использовать атрибут problem
+            # Для вывода ошибки библиотекарю стоит использовать атрибут problem
             return render_template('add book.html', all_returned='', problem='Количество книг не может быть меньше 1')
         else:
             # Антон, весь твой sql должен быть здесь

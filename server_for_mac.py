@@ -34,36 +34,47 @@ def login():
 def main():
     stname = None
     if request.method == 'POST':
-        try:
-            change = request.form['Change']
-            print(change, type(change), stname)
-            uch = True
-            return render_template('main.html', stname='Книга Удалена', arrays=None, uch=None, isdeleted='Удалено')
-        except:
-            select = request.form['select']
-            print(select)
-            if select == 'По ученику':
-                name = request.form['name']
-                surname = request.form['surname']
-                grade = request.form['numclass'] + request.form['letterclass']
+        select = request.form["select"]
+        print(select)
+        if select == 'По ученику':
+            name = request.form['name']
+            surname = request.form['surname']
+            grade = request.form['numclass'] + request.form['letterclass']
+            try:
                 gender = request.form['gender']
-                print(name,surname, gender, grade)
-                books = ['Windows 10', '12.12.2016', '22.01.2016']
-                if len(books) >= 1:
-                    uch = True
-                else:
-                    uch = 3
-                return render_template('newmain.html', stname=name + surname, arrays=books, uch=uch)
-            elif select == 'По книге':
-                stname = request.form['search']
-                students = [['Антон Ройтерштейн', '12.12.2016', '22.01.2016']]
-                if len(students) >= 1:
-                    uch = False
-                else:
-                    uch = 3
-                return render_template('newmain.html', stname=stname, arrays=students, uch=uch)
+            except:
+                gender = ''
+            print(name, surname, gender, grade)
+            books = [['Windows 10', '12.12.2016', '22.01.2016']]
+            puple = ['Денис Мазур']
+            #['Денис Мазур', "Антон Мазур", "Максим Мазур"]
+            if grade == "--":
+                grade = ''
+            else:
+                grade = 'Класс: ' + grade
+            if len(puple) > 1:
+                uch = True
+            elif len(puple) == 1:
+                print('Denis-gay')
+                return render_template('found.html', stname=name + ' ' + surname, klass=grade, arrays=books)
+            else:
+                uch = 140
+            return render_template('newmain.html', stname=name + ' ' + surname, klass=grade, arrays=puple, uch=uch)
 
-    return render_template('newmain.html', stname=None, arrays=None, klass=None, uch=None)
+        elif select == 'По книге':
+            title = request.form['title']
+            author = request.form['surname']
+            stname = title + ', ' + author
+            students = ['Антон Ройтерштейн', '12.12.2016', '22.01.2016']
+            if len(students) >= 1:
+                uch = False
+            else:
+                uch = 3
+            if len(stname) <= 2:
+                stname = "Имя не указано"
+            return render_template('newmain.html', stname=stname, arrays=students, uch=uch)
+
+    return render_template('newmain.html', stname=None, arrays=None, uch=None)
 
 
 @app.route('/logout')
@@ -78,7 +89,13 @@ def addbook():
         code = request.form['scan']
         cnt = request.form['col']
         print(code, cnt)
-        if int(cnt) < 1:
+        try:
+            print(int(code))
+        except:
+            return render_template('add book.html', all_returned='', problem='ISBN должен состоять только из цифр')
+        if len(code) < 13 or len(code) > 13:
+            return render_template('add book.html', all_returned='', problem='ISBN должен состоять из 13 цифр')
+        if len(cnt) < 1 or int(cnt) < 1:
             return render_template('add book.html', all_returned='', problem='Количество книг не может быть меньше 1')
         else:
             return render_template('add book.html', all_returned='Добавлено!', problem='')

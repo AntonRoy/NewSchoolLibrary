@@ -15,15 +15,16 @@
     </div>
 </nav>
 <div class="container" align="center">
+    <ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#student" role="tab" data-toggle="tab">Поиск по ученику</a></li>
+    <li><a href="#book" role="tab" data-toggle="tab">Поиск по книге</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade in" id="student">
     <h2 align="center">Поиск задолжностей</h2>
     <form class="form-inline" method='post' id="name">
-      <div class="row">
-          <div class="form-group">
-        <select name="select">
-    <option> По ученику</option>
-    <option> По книге</option>
-            </select>
-      </div>
+        <input type="hidden" value="По ученику" name="select">
+        <div class="form-group">
         <div class="form-group">
             <input class="form-control input-md" type="search" name="name" placeholder="Имя">
         </div>
@@ -32,33 +33,86 @@
         </div>
             <div class="form-group">
         <input class="btn btn-info col-md" type="submit" value="Поиск">
-</div>
-        </div><br>
+</div><br>
+            <a style="color: RGB(119,119,119);" data-toggle="collapse" href="#hide"><ins>Расширенный поиск</ins></a>
+  <div class="collapse" id="hide">
+        <div class="form-group">
         <b>Пол:</b>
         <input type="radio" value="boy" name="gender">Мужской
         <input type="radio" value="girl" name="gender">Женский
         <b>	&nbsp;	&nbsp;</b>
         <b>Класс:</b>
         <select name="numclass">
+            <option>-</option>
             {%for i in range(5, 12)%}
             <option>{{i}}</option>
             {%endfor%}
+
         </select>
         <select name="letterclass">
+            <option>-</option>
             <option>А</option>
             <option>Б</option>
             <option>В</option>
-        </select>
+        </select><br>
+        </div>
+        </div>
+        </div>
     </form>
     {% if uch == True%}
+    <h3>{{stname}}</h3>
+        <h4>{{klass}}</h4>
+    <div class="panel-group">
+        {%for i in arrays%}
+    <div class="panel panel-danger">
+      <div class="panel-body">
+            <form method="post">
+                <a name="founded_name" class="text-default">{{i}}</a>
+            </form>
+      </div>
+    </div>
+            {%endfor%}
+    </div>
+    {%endif%}
+        </div>
+    <div role="tabpanel" class="tab-pane fade in" id="book">
+        <h2 align="center">Поиск задолжностей</h2>
+    <form class="form-inline" method='post' >
+        <input type="hidden" value="По книге" name="select">
+        <div class="form-group">
+            <input class="form-control input-md" type="search" name="title" placeholder="Название">
+        </div>
+        <div class="form-group">
+            <input class="form-control input-md" type="search" name="surname" placeholder="Фамилия Автора">
+        </div>
+        <div class="form-group">
+            <input class="btn btn-info col-md" type="submit" value="Поиск">
+        </div>
+    </form>
+     {% if uch == False%}
     <h3>{{stname}}</h3>
     <div class="panel-group">
         {%for i in arrays%}
     <div class="panel panel-danger">
-      <div class="panel-body">{{i}}</div>
+        <form method="post">
+            <div class="panel-body">
+            <button type="submit" name="found" >
+                <a name="founded_name" class="text-default">{{i}}</a>
+            </button>
+            </div>
+        </form>
     </div>
             {%endfor%}
     </div>
     {%endif%}
     </div>
+  </div>
+    </div>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 {%endblock%}
