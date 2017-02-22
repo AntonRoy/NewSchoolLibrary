@@ -36,8 +36,18 @@ def main():
     if request.method == 'POST':
         try:
             selectedStud = request.form['stud']
-            print(selectedStud)
-            return render_template('found.html', )
+            types = request.form['type']
+            if types == 'True':
+                uch = True
+                data = [['Windows 10', '12.12.2016', '22.01.2016']]
+            else:
+                uch = False
+                data = [
+                    ['Антон Ройтерштейн', "20.01.2017", '20.02.2017'],
+                    ['Денис Мазур', "1.02.2017", '1.03.2017']
+                        ]
+            print(selectedStud, types)
+            return render_template('found.html', stname=selectedStud, arrays=data, uch=uch)
         except:
             select = request.form["select"]
             print(select)
@@ -49,7 +59,7 @@ def main():
                     gender = request.form['gender']
                 except:
                     gender = ''
-                print(name, surname, gender, grade)
+                #print(name, surname, gender, grade)
                 books = [['Windows 10', '12.12.2016', '22.01.2016']]
                 puple=['Денис Мазур', "Антон Мазур", "Максим Мазур"]
                 if grade == "--":
@@ -68,7 +78,7 @@ def main():
                 title = request.form['title']
                 author = request.form['surname']
                 stname = title + ', ' + author
-                students = ['Денис Мазур', "Антон Мазур", "Максим Мазур"]
+                students = ['Достоевский, Преступление и наказание', "Ницше, Так говорил Заратустра", "Данте, Божественная Комедия"]
                 data = [
                     ['Антон Ройтерштейн', "20.01.2017", '20.02.2017'],
                     ['Денис Мазур', "1.02.2017", '1.03.2017']
@@ -82,7 +92,7 @@ def main():
                     return render_template('found.html', stname=stname, arrays=data, uch=uch)
                 if len(stname) <= 2:
                     stname = "Имя не указано"
-
+                    return render_template('newmain.html', stname=stname, arrays=None, uch=None)
 
     return render_template('newmain.html', stname=None, arrays=None, uch=None)
 

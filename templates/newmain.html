@@ -68,6 +68,7 @@
                 <div class="panel-body">
                     <form method="post" id="form">
                     <input type="hidden" value="{{i}}" name="stud">
+                    <input type="hidden" value="True" name="type">
                     <a onclick="document.getElementById('form').submit(); return false; console.log('get');">{{i}}</a>
                     </form>
                 </div>
@@ -98,6 +99,7 @@
             <div class="panel-body">
                 <form method="post" id="form">
                 <input type="hidden" value="{{i}}" name="stud">
+                <input type="hidden" value="False" name="type">
                 <a onclick="document.getElementById('form').submit(); return false; console.log('get');">{{i}}</a>
                 </form>
             </div>

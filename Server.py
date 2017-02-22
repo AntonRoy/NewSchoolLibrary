@@ -45,7 +45,7 @@ def main():
             print(select)
             if select == 'По ученику':
                 stname = request.form['search']
-                print(stname)
+                #print(stname)
                 books = executes_for_web.Search_Of_Student(stname)
                 if len(books) >= 1:
                     uch = True
