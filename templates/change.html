@@ -29,10 +29,13 @@
             <tbody>
             {%for i in arrays%}
             <tr>
-                <th>{{i[0]}}</th>
-                <th>{{i[1]}}</th>
-                <th>{{i[2]}}</th>
+                <th><{{i[0]}} <input form="#fr" type="hidden" name="namebook"/> <form id="fr" method="post"></form></th>
+                <th></th>
+                <th><input form="#fr" type="datetime" name="date" value="{{i[2]}}"/></th>
+                <th><input form="#fr" type="submit" name="safe" value="сохранить" />
+                    <input form="#fr" type="submit" value="&times;"></th>
             </tr>
+
             {%endfor%}
             </tbody>
         </table>

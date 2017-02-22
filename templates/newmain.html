@@ -64,13 +64,14 @@
         <h4>{{klass}}</h4>
     <div class="panel-group">
         {%for i in arrays%}
-    <div class="panel panel-danger">
-      <div class="panel-body">
-            <form method="post">
-                <a name="founded_name" class="text-default">{{i}}</a>
-            </form>
-      </div>
-    </div>
+        <div class="panel panel-danger">
+                <div class="panel-body">
+                    <form method="post" id="form">
+                    <input type="hidden" value="{{i}}" name="stud">
+                    <a onclick="document.getElementById('form').submit(); return false; console.log('get');">{{i}}</a>
+                    </form>
+                </div>
+        </div>
             {%endfor%}
     </div>
     {%endif%}
@@ -94,13 +95,12 @@
     <div class="panel-group">
         {%for i in arrays%}
     <div class="panel panel-danger">
-        <form method="post">
             <div class="panel-body">
-            <button type="submit" name="found" >
-                <a name="founded_name" class="text-default">{{i}}</a>
-            </button>
+                <form method="post" id="form">
+                <input type="hidden" value="{{i}}" name="stud">
+                <a onclick="document.getElementById('form').submit(); return false; console.log('get');">{{i}}</a>
+                </form>
             </div>
-        </form>
     </div>
             {%endfor%}
     </div>
