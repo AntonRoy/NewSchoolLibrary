@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <title>Neo-lib</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+<div class="navbar navbar-fixed navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <span class="navbar-brand">Электронная система управления библиотекой</span>
+        </div>
+        <form class="navbar-form navbar-right" method="post">
+      <div class="form-group">
+       <input type="text" class="form-control input-md" name = 'login' id="login" placeholder="логин">
+      </div>
+
+      <div class="form-group">
+       <input type="password" class="form-control input-md" name = 'password'  id='password' placeholder="пароль">
+      </div>
+
+     <input class="btn btn-success btn-md" type = 'submit'  value="Войти">
+        </form>
+    </div>
+</div>
+{% if error %}<h3 class="text-danger text-right"><strong>Ошибка:</strong>{{ error }} &nbsp; &nbsp;&nbsp; &nbsp;</h3> {% endif %}
+<div class="jumbotron">
+    <div class="container">
+        <h2>Школьная Библиотека</h2>
+        <p>Это web-приложение создано для управления школьной библиотекой</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 div">
+        <h2>"Качественный софт"</h2>
+        <p>Но это не точно. Наш код отличается огромным количеством костылей и велосипедов. Вы можете быть уверены, что качественно
+            написаный участок кода был скопирован из Всемирной паутины. Наши программисты пользуются принципом: $#%&, $#%&, и в продакшен!
+        </p>
+    </div>
+    <div class="col-md-4 div">
+        <h2>"Красивое оформение"</h2>
+        <p>Все, что умеют делать наши кодеры - кпировать css из интернета и использовать bootstrap. И то они делают криво и некрасиво
+        </p>
+    </div>
+    <div class="col-md-4 div">
+        <h2>"Быстрое выполнение"</h2>
+        <p>За пять месяцев наша команда не смогла сделать легкий проект, который бы хорошие программисты выполнили за неделю. В общем, мы делаем
+            проекты с такой же скоростью, с которой российские строители делают черкизовское шоссе.
+        </p>
+    </div>
+
+</div>
+</body>

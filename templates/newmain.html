@@ -1,7 +1,7 @@
 {%extends "layer.html"%}
 {%block body%}
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
             <span class="navbar-brand">Электронная система управления библиотекой</span>
@@ -14,13 +14,18 @@
         </div>
     </div>
 </nav>
+<br>
 <div class="container" align="center">
     <ul class="nav nav-tabs" role="tablist">
-    <li class="active"><a href="#student" role="tab" data-toggle="tab">Поиск по ученику</a></li>
-    <li><a href="#book" role="tab" data-toggle="tab">Поиск по книге</a></li>
+    <li class="{{a_stud}}"><a href="#student" role="tab" data-toggle="tab" id="astud">Поиск по ученику</a></li>
+    <li class="{{a_book}}"><a href="#book" role="tab" data-toggle="tab" id="abook">Поиск по книге</a></li>
   </ul>
+
+
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active fade in" id="student">
+
+
+    <div role="tabpanel" class="{{div_stud}}" id="student">
     <h2 align="center">Поиск задолжностей</h2>
     <form class="form-inline" method='post' id="name">
         <input type="hidden" value="По ученику" name="select">
@@ -76,8 +81,11 @@
             {%endfor%}
     </div>
     {%endif%}
+
         </div>
-    <div role="tabpanel" class="tab-pane fade in" id="book">
+
+
+    <div role="tabpanel" class="{{div_book}}" id="book">
         <h2 align="center">Поиск задолжностей</h2>
     <form class="form-inline" method='post' >
         <input type="hidden" value="По книге" name="select">
@@ -112,9 +120,22 @@
     </div>
 
 <!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!--<script>
+$["#astud"].find(a).click(function(){
+$["#book"].removeClass("active");
+$(this).addClass("active");
+$["#student"].addClass("active");
+});
+$["#abook"].find(a).click(function(){
+$["#student"].removeClass("active");
+$(this).addClass("active");
+$["#book"].addClass("active");
+});
+</script>-->
+
 
 {%endblock%}
