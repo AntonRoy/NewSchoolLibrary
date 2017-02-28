@@ -2,6 +2,7 @@ from flask import*
 from flask_bootstrap import Bootstrap
 import os
 
+
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
@@ -21,12 +22,28 @@ def start():
 def login():
     error = None
     if request.method == 'POST':
-        print()
-        if request.form['login'] == username and request.form['password'] == password:
-            session['logged_in'] = True
-            return redirect(url_for('main'))
-        else:
-            error = " Неверный логин/пароль"
+        try:
+            if request.form['login'] == username and request.form['password'] == password:
+                session['logged_in'] = True
+                return redirect(url_for('main'))
+            else:
+                error = " Неверный логин/пароль"
+        except:
+            numb_form = request.form['numb_form']
+            print(numb_form)
+            if numb_form == '0':
+                name_stud = request.form['name_stud']
+                surname_stud = request.form['surname_stud']
+                id_stud = request.form['id_stud']
+                grade_stud = request.form['grade_numb'] + request.form['grade_letter']
+                print(name_stud, surname_stud, id_stud, grade_stud)
+            elif numb_form == '1':
+                book_id = request.form['book_id']
+                id_stud = request.form['id_stud']
+                print(id_stud, book_id)
+            elif numb_form == '2':
+                book_id = request.form['book_id']
+                print(book_id)
     return render_template('about.html', error=error)
 
 
@@ -136,11 +153,13 @@ def addbook():
         if len(code) < 13 or len(code) > 13:
             return render_template('add book.html', all_returned='', problem='ISBN должен состоять из 13 цифр')
         if len(cnt) < 1 or int(cnt) < 1:
-            return render_template('add book.html', all_returned='', problem='Количество книг не может быть меньше 1')
+            return render_template('add book.html', all_returned='',
+                                   problem='Количество книг не может быть меньше 1')
         else:
             return render_template('add book.html', all_returned='Добавлено!', problem='')
 
     return render_template('add book.html', all_returned='', problem='')
+
 
 app.secret_key = os.urandom(24)
 
