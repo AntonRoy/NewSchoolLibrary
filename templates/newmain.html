@@ -64,8 +64,9 @@
         </div>
         </div>
     </form>
-    {% if uch == True%}
         <h3>{{error}}</h3>
+    {% if uch == True%}
+
     <h3>{{stname}}</h3>
         <h4>{{klass}}</h4>
     <div class="panel-group">
@@ -100,8 +101,9 @@
             <input class="btn btn-info col-md" type="submit" value="Поиск">
         </div>
     </form>
+                <h3> {{error}}</h3>
      {% if uch == False%}
-        <h3> {{error}}</h3>
+
     <h3>{{stname}}</h3>
     <div class="panel-group">
         {%for i in arrays%}

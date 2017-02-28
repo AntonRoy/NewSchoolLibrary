@@ -111,7 +111,7 @@ def main():
                     return render_template('found.html', stname=stname, arrays=data, uch=uch)
                 elif len(students) < 1:
                     error = 'Ничего не нацдено'
-                    return render_template('newmain.html', stname=stname, arrays=students, uch=False,
+                    return render_template('newmain.html', stname=stname, arrays=students, uch=140,
                                            a_book=a_book, a_stud=a_stud, div_book=div_book, div_stud=div_stud, error=error)
 
     return render_template('newmain.html', stname=None, arrays=None, uch=None,
